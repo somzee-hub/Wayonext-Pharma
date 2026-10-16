@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_wayonext" model="ir.ui.view">
+        <field name="name">product.template.form.wayonext</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Pharma Details" name="wayonext_pharma">
+                    <group>
+                        <group string="Product">
+                            <field name="wn_dosage_form"/>
+                            <field name="wn_pack_size"/>
+                            <field name="wn_schedule"/>
+                        </group>
+                        <group string="Trade Pricing">
+                            <field name="wn_mrp"/>
+                            <field name="wn_ptr"/>
+                            <field name="list_price" string="PTS (Price to Stockist)"/>
+                        </group>
+                    </group>
+                    <group string="Composition">
+                        <field name="wn_composition" nolabel="1" colspan="2"/>
+                    </group>
+                    <group string="Indication">
+                        <field name="wn_indication" nolabel="1" colspan="2"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_list_wayonext" model="ir.ui.view">
+        <field name="name">product.template.list.wayonext</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="before">
+                <field name="wn_pack_size" optional="show"/>
+                <field name="wn_schedule" optional="show"/>
+                <field name="wn_mrp" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

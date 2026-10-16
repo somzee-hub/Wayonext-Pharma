@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_form_wayonext" model="ir.ui.view">
+        <field name="name">res.partner.form.wayonext</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="wn_partner_type"/>
+                <field name="wn_drug_licence" invisible="wn_partner_type not in ('stockist', 'manufacturer', 'institution')"/>
+                <field name="wn_drug_licence_valid_till" invisible="wn_partner_type not in ('stockist', 'manufacturer', 'institution')"/>
+                <field name="wn_fssai" invisible="wn_partner_type not in ('stockist', 'manufacturer')"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
